@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Infos from './components/Infos';
+import List from './components/List';
+
+const infoApiURL = 'http://www.mocky.io/v2/5e60f62433000064cf97be10';
+const reposApiURL = 'https://api.github.com/users/rafamatoso/repos';
+const starredApiURL = 'https://api.github.com/users/rafamatoso/starred';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Infos apiURL={infoApiURL} />
+        <List apiURL={reposApiURL} title="Minha lista de repos" />
+        <List apiURL={starredApiURL} title="Minha lista de favoritos" />
+      </div>
+    );
+  }
 }
 
 export default App;
